@@ -2,6 +2,7 @@
 layout: default
 title: System
 parent: Linux
+grand_parent: TryHackMe
 nav_order: 2
 ---
 

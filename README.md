@@ -1,7 +1,7 @@
-# TryHackMe — Learning Notes
+# Learning & Notes
 
-> Personal cybersecurity learning journal. Practical-first: command → output → insight.
-> Built while working through the **TryHackMe Cyber Security 101** path alongside hands-on lab work.
+> Personal technical learning journal. Practical-first: command → output → insight.
+> Started with the notes below, built while working through the **TryHackMe Cyber Security 101** path alongside hands-on lab work — now a general repo, with each subject under its own top-level folder.
 
 ---
 

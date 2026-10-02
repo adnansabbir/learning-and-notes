@@ -1,21 +1,25 @@
-const CACHE = 'thm-notes-v12';
+---
+---
+const BASE = '{{ site.baseurl }}';
+const CACHE = 'notes-v13';
 
 const PRECACHE = [
-  '/tryhackme/',
-  '/tryhackme/linux/',
-  '/tryhackme/linux-basics/',
-  '/tryhackme/linux-system/',
-  '/tryhackme/vim/',
-  '/tryhackme/windows/',
-  '/tryhackme/windows-basics/',
-  '/tryhackme/networking/',
-  '/tryhackme/networking-basics/',
-  '/tryhackme/mac-addresses/',
-  '/tryhackme/recon/',
-  '/tryhackme/nmap/',
-  '/tryhackme/web-recon/',
-  '/tryhackme/search-skills/',
-  '/tryhackme/defenses/',
+  `${BASE}/`,
+  `${BASE}/tryhackme/`,
+  `${BASE}/tryhackme/linux/`,
+  `${BASE}/tryhackme/linux/basics/`,
+  `${BASE}/tryhackme/linux/system/`,
+  `${BASE}/tryhackme/linux/vim/`,
+  `${BASE}/tryhackme/windows/`,
+  `${BASE}/tryhackme/windows/basics/`,
+  `${BASE}/tryhackme/networking/`,
+  `${BASE}/tryhackme/networking/basics/`,
+  `${BASE}/tryhackme/networking/mac-addresses/`,
+  `${BASE}/tryhackme/recon/`,
+  `${BASE}/tryhackme/recon/nmap/`,
+  `${BASE}/tryhackme/recon/web-recon/`,
+  `${BASE}/tryhackme/recon/search-skills/`,
+  `${BASE}/tryhackme/defenses/`,
 ];
 
 self.addEventListener('install', e => {

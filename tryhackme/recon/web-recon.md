@@ -2,6 +2,7 @@
 layout: default
 title: Web Recon
 parent: Recon
+grand_parent: TryHackMe
 nav_order: 2
 ---
 

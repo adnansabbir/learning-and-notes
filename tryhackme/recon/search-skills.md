@@ -2,6 +2,7 @@
 layout: default
 title: Search Skills
 parent: Recon
+grand_parent: TryHackMe
 nav_order: 3
 ---
 

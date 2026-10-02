@@ -4,40 +4,16 @@ title: Home
 nav_order: 1
 ---
 
-# TryHackMe Notes
+# Learning & Notes
 
-Personal cybersecurity learning journal. Command-first, short, rewarding to re-read.
+Personal technical learning journal. Command-first, short, rewarding to re-read.
 
 <div class="card-grid">
 
-  <a class="card" href="linux">
-    <div class="card-emoji">🐧</div>
-    <div class="card-title">Linux</div>
-    <div class="card-desc">Commands, file system, processes, vim — the OS you live in 90% of the time.</div>
-  </a>
-
-  <a class="card" href="windows">
-    <div class="card-emoji">🪟</div>
-    <div class="card-title">Windows</div>
-    <div class="card-desc">The corporate OS — NTFS, ADS, users, UAC, MSConfig.</div>
-  </a>
-
-  <a class="card" href="networking">
-    <div class="card-emoji">🔌</div>
-    <div class="card-title">Networking</div>
-    <div class="card-desc">Layer 2/3 fundamentals — IP, ARP, MAC vendor fingerprints.</div>
-  </a>
-
-  <a class="card" href="recon">
-    <div class="card-emoji">🔍</div>
-    <div class="card-title">Recon</div>
-    <div class="card-desc">Nmap, web recon, Shodan, CVEs — map the target before you touch it.</div>
-  </a>
-
-  <a class="card" href="defenses">
-    <div class="card-emoji">🛡️</div>
-    <div class="card-title">Defenses</div>
-    <div class="card-desc">NAC, EDR, NDR, honeytokens — understand how corps catch attackers.</div>
+  <a class="card" href="tryhackme/">
+    <div class="card-emoji">🔐</div>
+    <div class="card-title">TryHackMe</div>
+    <div class="card-desc">Cyber Security 101 — Linux, Windows, networking, recon, defenses.</div>
   </a>
 
 </div>

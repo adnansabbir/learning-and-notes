@@ -2,6 +2,7 @@
 layout: default
 title: MAC Addresses
 parent: Networking
+grand_parent: TryHackMe
 nav_order: 2
 ---
 

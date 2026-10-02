@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Defenses
-nav_order: 6
+parent: TryHackMe
+nav_order: 5
 ---
 
 # Network Defenses

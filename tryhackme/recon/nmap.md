@@ -2,6 +2,7 @@
 layout: default
 title: Nmap
 parent: Recon
+grand_parent: TryHackMe
 nav_order: 1
 ---
 

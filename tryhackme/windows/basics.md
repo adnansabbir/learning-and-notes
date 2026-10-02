@@ -2,6 +2,7 @@
 layout: default
 title: Basics
 parent: Windows
+grand_parent: TryHackMe
 nav_order: 1
 ---
 

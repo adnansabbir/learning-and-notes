@@ -1,15 +1,17 @@
+---
+---
 {
-  "name": "TryHackMe Notes",
-  "short_name": "THM Notes",
-  "description": "Personal cybersecurity learning journal",
-  "start_url": "/tryhackme/",
-  "scope": "/tryhackme/",
+  "name": "Learning & Notes",
+  "short_name": "Notes",
+  "description": "Personal technical learning journal",
+  "start_url": "{{ site.baseurl }}/",
+  "scope": "{{ site.baseurl }}/",
   "display": "standalone",
   "background_color": "#1c1c1e",
   "theme_color": "#1c1c1e",
   "icons": [
     {
-      "src": "/tryhackme/icon.svg",
+      "src": "{{ '/icon.svg' | relative_url }}",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"

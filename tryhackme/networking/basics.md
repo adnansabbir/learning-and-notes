@@ -2,6 +2,7 @@
 layout: default
 title: Basics
 parent: Networking
+grand_parent: TryHackMe
 nav_order: 1
 ---
 

@@ -1,8 +1,8 @@
-<link rel="manifest" href="/tryhackme/manifest.json">
-<link rel="apple-touch-icon" href="/tryhackme/icon.svg">
+<link rel="manifest" href="{{ '/manifest.json' | relative_url }}">
+<link rel="apple-touch-icon" href="{{ '/icon.svg' | relative_url }}">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="THM Notes">
+<meta name="apple-mobile-web-app-title" content="Notes">
 <meta name="theme-color" content="#1c1c1e">
 
 <style>
@@ -43,14 +43,31 @@
       bottom: calc(1rem + env(safe-area-inset-bottom));
     }
   }
+  .search-scope-toggle {
+    display: inline-block;
+    margin: 0.4rem 0 0 0.1rem;
+    padding: 0.15rem 0.6rem;
+    font-size: 0.75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(60, 60, 60, 0.6);
+    color: #ccc;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .search-scope-toggle.is-all {
+    background: rgba(9, 105, 218, 0.3);
+    color: #fff;
+    border-color: rgba(9, 105, 218, 0.6);
+  }
 </style>
 
 <script>
   // ---- Service worker registration ----
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('/tryhackme/sw.js', {
-        scope: '/tryhackme/',
+      navigator.serviceWorker.register('{{ "/sw.js" | relative_url }}', {
+        scope: '{{ "/" | relative_url }}',
         updateViaCache: 'none'
       }).catch(function (err) { console.warn('SW register failed', err); });
     });
@@ -114,4 +131,83 @@
   } else {
     thmInjectChrome();
   }
+
+  // ---- Scoped search: default results to the current top-level subject ----
+  // Note: this script tag runs in <head>, before <body> exists — so lunr
+  // patching (no DOM needed) starts immediately, but anything touching
+  // #search-input must wait for DOMContentLoaded.
+  (function () {
+    var SITE_BASE = '{{ site.baseurl }}';
+    var SEARCH_DATA_URL = '{{ "/assets/js/search-data.json" | relative_url }}';
+    var scopeAll = false;
+    var docsByRef = null;
+
+    function currentSubjectPrefix() {
+      var path = location.pathname;
+      if (SITE_BASE && path.indexOf(SITE_BASE) === 0) path = path.slice(SITE_BASE.length);
+      var seg = path.split('/').filter(Boolean)[0];
+      return seg ? ('/' + seg + '/') : null;
+    }
+
+    function patchLunrQuery() {
+      if (!window.lunr || !window.lunr.Index || lunr.Index.prototype.__thmScoped) return;
+      var origQuery = lunr.Index.prototype.query;
+      lunr.Index.prototype.query = function () {
+        var results = origQuery.apply(this, arguments);
+        if (scopeAll || !docsByRef) return results;
+        var prefix = currentSubjectPrefix();
+        if (!prefix) return results;
+        return results.filter(function (r) {
+          var doc = docsByRef[r.ref];
+          return doc && doc.relUrl && doc.relUrl.indexOf(prefix) === 0;
+        });
+      };
+      lunr.Index.prototype.__thmScoped = true;
+    }
+
+    fetch(SEARCH_DATA_URL)
+      .then(function (r) { return r.json(); })
+      .then(function (data) { docsByRef = data; patchLunrQuery(); })
+      .catch(function (e) { console.warn('scoped search data fetch failed', e); });
+
+    var tries = 0;
+    var waitForLunr = setInterval(function () {
+      patchLunrQuery();
+      if ((window.lunr && lunr.Index && lunr.Index.prototype.__thmScoped) || ++tries > 30) {
+        clearInterval(waitForLunr);
+      }
+    }, 100);
+
+    function addScopeToggle() {
+      var searchInput = document.getElementById('search-input');
+      if (!searchInput || document.getElementById('search-scope-toggle')) return;
+      var prefix = currentSubjectPrefix();
+      if (!prefix) return; // nothing to scope on the site home page
+      var wrap = document.querySelector('.search-input-wrap');
+      if (!wrap) return;
+
+      var toggle = document.createElement('button');
+      toggle.id = 'search-scope-toggle';
+      toggle.type = 'button';
+      toggle.className = 'search-scope-toggle';
+      toggle.textContent = 'This section only';
+      toggle.addEventListener('click', function () {
+        scopeAll = !scopeAll;
+        toggle.textContent = scopeAll ? 'All subjects' : 'This section only';
+        toggle.classList.toggle('is-all', scopeAll);
+        var val = searchInput.value;
+        searchInput.value = '';
+        searchInput.dispatchEvent(new Event('keyup'));
+        searchInput.value = val;
+        searchInput.dispatchEvent(new Event('keyup'));
+      });
+      wrap.insertAdjacentElement('afterend', toggle);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', addScopeToggle);
+    } else {
+      addScopeToggle();
+    }
+  })();
 </script>

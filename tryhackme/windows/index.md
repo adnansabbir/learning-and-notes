@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Windows
-nav_order: 3
+parent: TryHackMe
+nav_order: 2
 has_children: true
 ---
 
@@ -9,6 +10,6 @@ has_children: true
 
 The dominant OS in corporate networks — and the #1 target for attackers.
 
-- **[Basics]({{ "/windows-basics/" | relative_url }})** — versions, NTFS, ADS, users, UAC, MSConfig
+- **[Basics]({{ "/tryhackme/windows/basics/" | relative_url }})** — versions, NTFS, ADS, users, UAC, MSConfig
 
 > More sections coming soon (Active Directory, PowerShell, Sysinternals).
