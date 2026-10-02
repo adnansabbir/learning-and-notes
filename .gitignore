@@ -7,3 +7,5 @@ _site/
 Gemfile.lock
 claude-handoff.md
 temp/
+.venv-jupyterlite/
+.jupyterlite.doit.db
