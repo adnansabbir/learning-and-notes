@@ -16,6 +16,12 @@ Personal technical learning journal. Command-first, short, rewarding to re-read.
     <div class="card-desc">Cyber Security 101 — Linux, Windows, networking, recon, defenses.</div>
   </a>
 
+  <a class="card" href="machine-learning/">
+    <div class="card-emoji">🤖</div>
+    <div class="card-title">Machine Learning</div>
+    <div class="card-desc">Concepts, tools, and hands-on experiments.</div>
+  </a>
+
 </div>
 
 <style>

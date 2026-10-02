@@ -20,3 +20,4 @@ exclude:
   - .claude/
   - README.md
   - tryhackme/README.md
+  - machine-learning/README.md
