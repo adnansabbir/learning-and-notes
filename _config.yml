@@ -19,3 +19,4 @@ exclude:
   - .idea/
   - .claude/
   - README.md
+  - tryhackme/README.md

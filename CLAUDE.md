@@ -148,3 +148,5 @@ tryhackme/                          → /tryhackme/
 - Children underneath follow the same `parent`/`grand_parent` pattern shown above
 - Add its pages to `PRECACHE` in `sw.js`, bump the cache key
 - No search config needed — scoping picks up the new URL segment automatically (see **Search scoping** below)
+- Give it its own `<subject>/README.md` (GitHub-facing, not built by Jekyll) and add a row for it to the root `README.md` table
+- Add `<subject>/README.md` to the `exclude:` list in `_config.yml` — otherwise Jekyll publishes it as a live page (this happened with `CLAUDE.md` and almost happened with `tryhackme/README.md`)
