@@ -8,6 +8,10 @@ Deployed to GitHub Pages at the site root (`/learning-and-notes/`). TryHackMe co
 
 **File paths mirror URL paths exactly.** `tryhackme/linux/basics.md` → `/tryhackme/linux/basics/`. When adding or moving a page, its location in the repo IS its URL (minus the `.md`, directory-index pages use `index.md`). No hidden `permalink:` overrides needed except on the rare page that intentionally breaks this convention.
 
+## Git commits
+
+Do not add a `Co-Authored-By: Claude ...` trailer to commit messages in this repo. Just the commit message itself, nothing appended.
+
 ## Who Adnan is
 
 - Software engineer, 7+ years. Pivoting into cybersecurity (AppSec / DevSecOps / Security Engineering).
