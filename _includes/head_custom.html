@@ -63,7 +63,7 @@
 </style>
 
 <script>
-  // ---- Service worker registration ----
+  /* ---- Service worker registration ---- */
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('{{ "/sw.js" | relative_url }}', {
@@ -73,10 +73,10 @@
     });
   }
 
-  // ---- DOM injection: reading time + force-refresh button ----
+  /* ---- DOM injection: reading time + force-refresh button ---- */
   function thmInjectChrome() {
     try {
-      // Reading time
+      /* Reading time */
       var main = document.querySelector('main, .main-content, article');
       var h1 = (main || document).querySelector('h1');
       if (h1 && !h1.parentNode.querySelector('.reading-time')) {
@@ -99,7 +99,7 @@
     } catch (e) { console.warn('reading-time inject failed', e); }
 
     try {
-      // Force-refresh button (always inject — never hidden)
+      /* Force-refresh button (always inject — never hidden) */
       if (!document.querySelector('.force-refresh-btn')) {
         var btn = document.createElement('button');
         btn.className = 'force-refresh-btn';
@@ -132,10 +132,10 @@
     thmInjectChrome();
   }
 
-  // ---- Scoped search: default results to the current top-level subject ----
-  // Note: this script tag runs in <head>, before <body> exists — so lunr
-  // patching (no DOM needed) starts immediately, but anything touching
-  // #search-input must wait for DOMContentLoaded.
+  /* ---- Scoped search: default results to the current top-level subject ----
+     this script tag runs in <head>, before <body> exists — so lunr
+     patching (no DOM needed) starts immediately, but anything touching
+     #search-input must wait for DOMContentLoaded. ---- */
   (function () {
     var SITE_BASE = '{{ site.baseurl }}';
     var SEARCH_DATA_URL = '{{ "/assets/js/search-data.json" | relative_url }}';
@@ -182,7 +182,7 @@
       var searchInput = document.getElementById('search-input');
       if (!searchInput || document.getElementById('search-scope-toggle')) return;
       var prefix = currentSubjectPrefix();
-      if (!prefix) return; // nothing to scope on the site home page
+      if (!prefix) return; /* nothing to scope on the site home page */
       var wrap = document.querySelector('.search-input-wrap');
       if (!wrap) return;
 
