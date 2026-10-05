@@ -135,6 +135,15 @@ tryhackme/                          → /tryhackme/
 │   └── search-skills.md  (parent: Recon, grand_parent: TryHackMe)
 └── defenses.md  (parent: TryHackMe, nav 5)       → /tryhackme/defenses/
 
+machine-learning/                   → /machine-learning/
+├── index.md  (title: Machine Learning, nav 3, has_children) — overview + fig-1-learning-types.png
+└── supervised-learning/            → /machine-learning/supervised-learning/
+    ├── index.md          (parent: Machine Learning, nav 1, has_children)
+    ├── regression.md     (parent: Supervised Learning, grand_parent: Machine Learning, nav 1)
+    └── classification.md (parent: Supervised Learning, grand_parent: Machine Learning, nav 2)
+
+Images live next to the page that uses them (e.g. `supervised-learning/fig-1-regression.png`), embedded with `![alt]({{ "/full/path.png" | relative_url }})`.
+
 <future-subject>/                   → /<future-subject>/
 └── ...                             (same pattern: own index.md, own nav_order siblings to "TryHackMe" at root)
 ```

@@ -1,7 +1,7 @@
 ---
 ---
 const BASE = '{{ site.baseurl }}';
-const CACHE = 'notes-v14';
+const CACHE = 'notes-v15';
 
 const PRECACHE = [
   `${BASE}/`,
@@ -21,6 +21,9 @@ const PRECACHE = [
   `${BASE}/tryhackme/recon/search-skills/`,
   `${BASE}/tryhackme/defenses/`,
   `${BASE}/machine-learning/`,
+  `${BASE}/machine-learning/supervised-learning/`,
+  `${BASE}/machine-learning/supervised-learning/regression/`,
+  `${BASE}/machine-learning/supervised-learning/classification/`,
 ];
 
 self.addEventListener('install', e => {

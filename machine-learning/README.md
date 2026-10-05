@@ -4,4 +4,7 @@
 
 Live notes: **[adnansabbir.github.io/learning-and-notes/machine-learning](https://adnansabbir.github.io/learning-and-notes/machine-learning/)**
 
-Nothing here yet — content gets added as topics start.
+| Section | Pages |
+|---|---|
+| Overview | Supervised vs. unsupervised learning |
+| Supervised Learning | Regression, Classification |
