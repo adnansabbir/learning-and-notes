@@ -21,6 +21,4 @@ exclude:
   - README.md
   - tryhackme/README.md
   - machine-learning/README.md
-  - machine-learning/lab-src/
-  - .venv-jupyterlite/
-  - .jupyterlite.doit.db
+  - machine-learning/notebooks/

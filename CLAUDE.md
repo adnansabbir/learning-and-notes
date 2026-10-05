@@ -155,29 +155,20 @@ tryhackme/                          → /tryhackme/
 - Give it its own `<subject>/README.md` (GitHub-facing, not built by Jekyll) and add a row for it to the root `README.md` table
 - Add `<subject>/README.md` to the `exclude:` list in `_config.yml` — otherwise Jekyll publishes it as a live page (this happened with `CLAUDE.md` and almost happened with `tryhackme/README.md`)
 
-## JupyterLite (machine-learning lab)
+## Notebooks (machine-learning)
 
-`machine-learning/lab/` is a self-contained in-browser Python environment (Pyodide/WASM kernel via [JupyterLite](https://jupyterlite.readthedocs.io/)) — no server needed, works as plain static files Jekyll just passes through untouched. Linked from `machine-learning/index.md`.
+`.ipynb` notebooks live in `machine-learning/notebooks/` and are run in **Google Colab**, opened straight from GitHub. Excluded from the Jekyll build — the site only links to them.
 
-**Two directories, don't confuse them:**
-- `machine-learning/lab-src/` — source `.ipynb` notebooks you actually edit. Excluded from the Jekyll build (not meant to be visited directly).
-- `machine-learning/lab/` — the **built** static JupyterLite app. Committed to the repo (GitHub Pages' legacy build can't run arbitrary Python, so this can't be built at deploy time — it must be built locally and checked in, ~20MB).
+**Colab link format:**
+```
+https://colab.research.google.com/github/adnansabbir/learning-and-notes/blob/main/machine-learning/notebooks/<file>.ipynb
+```
 
-**To add or edit a notebook:**
-1. Edit/add `.ipynb` files under `machine-learning/lab-src/`
-2. Rebuild:
-   ```bash
-   source .venv-jupyterlite/bin/activate   # create once: python3 -m venv .venv-jupyterlite && pip install jupyterlite-core jupyterlite-pyodide-kernel jupyter_server jupyterlab_server
-   rm -rf machine-learning/lab
-   jupyter lite build \
-     --contents machine-learning/lab-src \
-     --output-dir machine-learning/lab \
-     --base-url /learning-and-notes/machine-learning/lab/ \
-     --no-sourcemaps
-   ```
-3. Commit the regenerated `machine-learning/lab/` along with the source notebook
-4. `.venv-jupyterlite/` and `.jupyterlite.doit.db` (build cache) are gitignored and Jekyll-excluded — never commit them
+**Workflow:**
+1. Create/edit the notebook (Colab or local Jupyter), commit it to `machine-learning/notebooks/`
+2. Link it from the relevant note page with the Colab URL above
+3. Colab does not auto-save back to the repo — use *File → Save a copy in GitHub*, or download and commit
 
-**Entry points** (all under `/machine-learning/lab/`): `notebooks/?path=<file>.ipynb` (classic, simpler, linked from the site), `lab/` (full JupyterLab IDE, not phone-friendly), `repl/` (bare Python console).
+Prefer committing notebooks **with outputs** so they read as finished notes on GitHub without re-running.
 
-JupyterLite registers its own service worker scoped to `/machine-learning/lab/` for offline Pyodide caching — separate from and nested under this site's own root-scoped `sw.js`. Browsers handle nested SW scopes fine; don't try to unify them.
+> An in-browser JupyterLite lab was tried and removed — Pyodide can't run PyTorch/TF, and browser-stored edits vs. repo files was confusing. Don't reintroduce it.
