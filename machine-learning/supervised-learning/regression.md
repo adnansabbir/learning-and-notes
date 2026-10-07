@@ -6,22 +6,21 @@ grand_parent: Machine Learning
 nav_order: 1
 ---
 
-# Supervised Learning — Regression
+# Regression
 
-## 💡 Quick Summary
+## Quick summary
 
-- Regression is a type of **supervised learning**.
-- It predicts a **continuous numerical value**.
-- We train the model using examples where we already know the **input (x)** and the correct **output (y)**.
-- After training, we can give a new input and the model predicts the output.
+- Supervised learning that predicts a **number** (any value in a range, not a fixed set of options).
+- You train it on examples where you already know the input (x) and the right output (y).
+- Once trained, give it a new input and it predicts the output.
 
-## 📊 Example: Predicting House Prices
+## Example: house prices
 
-We have data on house size (input) and price (output). The model learns the relationship and can predict the price for a new house size.
+Input is house size, output is price. The model learns how size relates to price, then you can ask it about a size it hasn't seen.
 
 ![Regression: predicting house prices]({{ "/machine-learning/supervised-learning/fig-1-regression.png" | relative_url }})
 
-### Sample Training Data
+### Training data
 
 | Size (sq ft) | Price ($1,000s) |
 | --- | --- |
@@ -33,16 +32,16 @@ We have data on house size (input) and price (output). The model learns the rela
 | 2,500 | 350 |
 | … | … |
 
-## 🔍 How It Works
+## How it works
 
-1. We have a dataset with **input** (house size) and **output** (house price).
-2. The model learns the relationship between input and output (e.g., the green curve).
-3. After training, we can give a **new input** (e.g., 750 sq ft) and it predicts a **numerical value** (e.g., ~$150,000).
+1. Start with data: house size (input) and price (output).
+2. The model learns the relationship between them (the green curve in the chart).
+3. Give it a new size, say 750 sq ft, and it predicts a price, around $150,000.
 
-## 📌 Key Points to Remember
+## Remember
 
-- Regression predicts a **continuous numerical value**.
-- It is a **supervised learning** problem (we train using known input–output pairs).
-- Input is usually denoted as **x**, output as **y**.
-- The predicted value is often denoted as **ŷ (y-hat)**.
-- There can be infinitely many possible output values (not limited to a few classes).
+- Regression = predict a number.
+- It's supervised because you train on known input/output pairs.
+- Input is usually called **x**, output **y**.
+- The prediction is written **ŷ** ("y-hat").
+- The output can be basically any value, not one of a few fixed classes.

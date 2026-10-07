@@ -1,4 +1,4 @@
-# Machine Learning — Learning Notes
+# Machine Learning Notes
 
 > Notes on ML concepts, tools, and hands-on experiments.
 
@@ -8,3 +8,4 @@ Live notes: **[adnansabbir.github.io/learning-and-notes/machine-learning](https:
 |---|---|
 | Overview | Supervised vs. unsupervised learning |
 | Supervised Learning | Regression, Classification |
+| Unsupervised Learning | Clustering |

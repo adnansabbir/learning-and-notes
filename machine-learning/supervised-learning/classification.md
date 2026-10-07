@@ -6,22 +6,22 @@ grand_parent: Machine Learning
 nav_order: 2
 ---
 
-# Supervised Learning — Classification
+# Classification
 
-## 💡 Quick Summary
+## Quick summary
 
-- Classification is a type of **supervised learning**, just like regression.
-- It predicts a **class or category** from a finite set of possible classes.
-- We train the model using examples with known **inputs (x)** and correct **labels (y)**.
-- **Binary classification** has two classes; **multiclass classification** has more than two.
-- **Regression predicts a numerical value; classification predicts a category.**
+- Supervised learning, same as regression, but it predicts a **category** out of a fixed set.
+- You train it on examples with known inputs (x) and the right labels (y).
+- Two classes = binary classification. More than two = multiclass.
+- It can use more than one input feature.
+- Regression predicts a number, classification predicts a category.
 
-## 📊 Example: Classifying Tumors
+## Example: tumors
 
-Suppose we want to build a breast cancer detection system. In this simplified example, we have tumor sizes and their known diagnoses. The model learns from these labeled examples to predict a class for a new input.
+Say we're building a breast cancer detection system. Simplified version: we have tumor sizes and the known diagnosis for each one. The model learns from those and predicts a class for a new tumor.
 
-- **Input (x):** Tumor size.
-- **Output (y):** Diagnosis label.
+- **Input (x):** tumor size
+- **Output (y):** diagnosis label
 
 | Label | Class | Meaning | Chart marker |
 | --- | --- | --- | --- |
@@ -30,39 +30,70 @@ Suppose we want to build a breast cancer detection system. In this simplified ex
 
 ![Classification: benign or malignant]({{ "/machine-learning/supervised-learning/fig-1-classification.png" | relative_url }})
 
-### Sample Training Data
+### Training data
 
 | Tumor size (example units) | Diagnosis label |
 | --- | --- |
-| 2 | 0 — Benign |
-| 5 | 1 — Malignant |
-| 1 | 0 — Benign |
-| 7 | 1 — Malignant |
+| 2 | 0 (benign) |
+| 5 | 1 (malignant) |
+| 1 | 0 (benign) |
+| 7 | 1 (malignant) |
 | … | … |
 
-This is a teaching example. Tumor size alone does not determine whether a tumor is cancerous.
+Just a teaching example. Tumor size alone doesn't tell you if a tumor is cancerous.
 
-## 🔍 How It Works
+## Another example: two inputs, three classes
 
-1. We have a dataset with **inputs** (tumor sizes) and known **labels** (benign or malignant).
-2. The model learns patterns that help distinguish the classes.
-3. After training, we give it a **new input**, and it predicts a **class**.
+You're not stuck with one input and two classes. You can use several features together and predict one of many categories.
 
-The numbers **0 and 1 are category labels**, not numerical quantities to estimate. Their assignment is a convention: we could also represent the classes using words.
+Same example, but now with two inputs:
 
-## ⚖️ Regression vs. Classification
+- **x₁:** patient age (horizontal axis)
+- **x₂:** tumor size (vertical axis)
+
+Each point is one example with both features. Where it sits shows age and size, and the marker shows its known class.
+
+Three made-up classes for this one:
+
+| Label | Class | Chart marker |
+| --- | --- | --- |
+| 0 | Benign | Green circle |
+| 1 | Malignant, type A | Red cross |
+| 2 | Malignant, type B | Red triangle |
+
+![Classification: 2 input and 3 output]({{ "/machine-learning/supervised-learning/fig-2-classification.png" | relative_url }})
+
+For a new patient, say age 45 and tumor size 3, the model looks at both and picks one class: benign, type A or type B.
+
+That's multiclass classification: two inputs, three possible classes, one prediction per example. Type A and B are just placeholders here, age and size wouldn't really be enough for a diagnosis.
+
+The axes are the inputs and the markers are the classes. Adding more inputs doesn't turn it into regression, since regression can use multiple inputs too. What matters is what you're predicting:
+
+- **Classification:** which group does this belong to?
+- **Regression:** what number should it be?
+
+## How it works
+
+1. Start with inputs (tumor sizes) and known labels (benign or malignant).
+2. The model learns what separates the classes.
+3. Give it a new input and it predicts a class.
+
+The 0 and 1 are just labels, not amounts. You could use words instead, numbers are only a convention.
+
+## Regression vs. classification
 
 | | Regression | Classification |
 | --- | --- | --- |
-| Predicts | A continuous numerical value | A class or category |
+| Predicts | A number | A category |
 | Example | House price | Benign or malignant |
-| Possible outputs | Values across a continuous range | A finite set of classes |
-| Learning type | Supervised learning | Supervised learning |
+| Possible outputs | Anything in a range | A fixed set of classes |
+| Learning type | Supervised | Supervised |
 
-## 📌 Key Points to Remember
+## Remember
 
-- Classification assigns an input to a **category**.
-- It is **supervised learning** because we train using known input–label pairs.
-- **Binary classification:** Two classes, such as benign/malignant or spam/not spam.
-- **Multiclass classification:** More than two classes, such as cat/dog/bird.
-- A model may estimate **class probabilities**, but the predicted class comes from the defined set of categories.
+- Classification puts an input into a category.
+- One input or many, the output is still a class.
+- It's supervised because you train on known input/label pairs.
+- **Binary:** two classes, like benign/malignant or spam/not spam.
+- **Multiclass:** more than two, like cat/dog/bird.
+- A model might give probabilities for each class, but the final prediction is always one of the defined classes.

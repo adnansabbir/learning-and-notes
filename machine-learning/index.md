@@ -7,31 +7,33 @@ has_children: true
 
 # Machine Learning
 
-Machine learning is a way of teaching computers to learn patterns from data and use those patterns to make predictions or decisions, without explicitly programming every rule.
+Teaching a computer to pick up patterns from data and use them to make predictions, instead of writing every rule by hand.
 
-## 💡 Quick Summary
+## Quick summary
 
-Two main types of machine learning are:
+Two main types:
 
-- **Supervised learning:** Learns from data with known answers (labels).
-- **Unsupervised learning:** Finds patterns in data without given answers.
+- **Supervised learning:** learns from data that has the answers (labels).
+- **Unsupervised learning:** finds patterns in data with no answers given.
 
 ![Supervised vs. unsupervised learning]({{ "/machine-learning/fig-1-learning-types.png" | relative_url }})
 
-## Supervised Learning
+## Supervised learning
 
-We give the model examples containing both an **input (x)** and the correct **output (y)**. It learns the relationship and predicts an output for a new input.
+You give the model examples with an input (x) and the right output (y). It learns how they relate, then predicts y for a new x.
 
-- **[Regression]({{ "/machine-learning/supervised-learning/regression/" | relative_url }}):** Predicts a numerical value, such as a house price.
-- **[Classification]({{ "/machine-learning/supervised-learning/classification/" | relative_url }}):** Predicts a category, such as spam or not spam.
+- **[Regression]({{ "/machine-learning/supervised-learning/regression/" | relative_url }}):** predicts a number, like a house price.
+- **[Classification]({{ "/machine-learning/supervised-learning/classification/" | relative_url }}):** predicts a category, like spam or not spam.
 
-## Unsupervised Learning
+## Unsupervised learning
 
-We give the model data **without labels**. It discovers patterns or structure, such as grouping customers with similar shopping habits (**clustering**).
+You give the model data without labels and it finds structure on its own, like grouping customers who shop the same way (clustering).
 
-## 📌 Remember
+More here: **[Unsupervised Learning]({{ "/machine-learning/unsupervised-learning/" | relative_url }})** (clustering, using the tumor example)
 
-**Supervised → Learn from known answers.**  
-**Unsupervised → Discover patterns without given answers.**
+## Remember
 
-These are two major types; other approaches include **reinforcement learning**, where an agent learns through actions and rewards.
+**Supervised = learn from known answers.**  
+**Unsupervised = find patterns with no answers given.**
+
+There are other types too, like reinforcement learning, where an agent learns by taking actions and getting rewards.
