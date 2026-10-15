@@ -8,4 +8,4 @@ Live notes: **[adnansabbir.github.io/learning-and-notes/machine-learning](https:
 |---|---|
 | Overview | Supervised vs. unsupervised learning |
 | Supervised Learning | Regression, Classification |
-| Unsupervised Learning | Clustering |
+| Unsupervised Learning | Clustering, Anomaly Detection, Dimensionality Reduction |

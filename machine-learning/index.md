@@ -29,7 +29,9 @@ You give the model examples with an input (x) and the right output (y). It learn
 
 You give the model data without labels and it finds structure on its own, like grouping customers who shop the same way (clustering).
 
-More here: **[Unsupervised Learning]({{ "/machine-learning/unsupervised-learning/" | relative_url }})** (clustering, using the tumor example)
+- **[Clustering]({{ "/machine-learning/unsupervised-learning/clustering/" | relative_url }}):** groups similar examples together.
+- **[Anomaly Detection]({{ "/machine-learning/unsupervised-learning/anomaly-detection/" | relative_url }}):** spots examples that don't fit the usual pattern.
+- **[Dimensionality Reduction]({{ "/machine-learning/unsupervised-learning/dimensionality-reduction/" | relative_url }}):** describes each example with fewer numbers but keeps what matters.
 
 ## Remember
 

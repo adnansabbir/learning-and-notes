@@ -12,6 +12,8 @@ Deployed to GitHub Pages at the site root (`/learning-and-notes/`). TryHackMe co
 
 Do not add a `Co-Authored-By: Claude ...` trailer to commit messages in this repo. Just the commit message itself, nothing appended.
 
+Commit messages track **which notes were added**, e.g. `Add anomaly detection and dimensionality reduction notes`. Keep it to one short line. Don't mention the moves, index links, `sw.js` or doc updates that come with adding a note. Only describe structure or config changes when that's all the commit contains.
+
 ## Who Adnan is
 
 - Software engineer, 7+ years. Pivoting into cybersecurity (AppSec / DevSecOps / Security Engineering).
@@ -63,20 +65,20 @@ If a page is growing and starts to feel like too much to scroll through, use one
 
 ## Adding a new page
 
-1. Create the file **at the path matching its intended URL**, e.g. a new TryHackMe child page under Linux goes in `tryhackme/linux/<topic>.md` (→ `/tryhackme/linux/<topic>/`). Frontmatter:
+1. Create the file **at the path matching its intended URL**, e.g. `<subject>/<section>/<topic>.md` (→ `/<subject>/<section>/<topic>/`). Frontmatter:
    ```yaml
    ---
    layout: default
    title: Topic Name
-   parent: Linux
-   grand_parent: TryHackMe
+   parent: <Section title>
+   grand_parent: <Subject title>
    nav_order: <next number>
    ---
    ```
    (Use `parent` only, no `grand_parent`, for a page one level deep like a section's own `index.md`.)
 2. Add the card to the relevant `index.md` card grid (emoji + title + one-line desc) — the section's own index, not the site root, unless it's a brand-new top-level subject.
 3. Add the path to `PRECACHE` array in `sw.js` (for offline support) — full path including `/learning-and-notes/` prefix.
-4. Bump the cache key in `sw.js` (`notes-v13` → `v14`, etc.)
+4. Bump the cache key in `sw.js` (`notes-vN` → `notes-vN+1`)
 
 ## Tech stack
 
@@ -109,51 +111,28 @@ Implementation: same JS file (`_includes/head_custom.html`). Safe-area aware for
 
 ## Site structure (parent → children)
 
-Repo root is the general "Learning & Notes" site. Each subject gets its own top-level folder, and **folder layout mirrors URL layout exactly** — see the note at the top of this file. Pages use `just-the-docs` 3-level parent/grand_parent nav.
+Repo root is the general "Learning & Notes" site. Each subject gets its own top-level folder, and **folder layout mirrors URL layout exactly** (see the note at the top of this file). Pages use `just-the-docs` 3-level nav: subject → section → page.
+
+Don't keep a list of pages here. The repo is the source of truth: run `find . -name "*.md" -not -path "./_site/*"` or look at the folders. The generic shape is:
 
 ```
-/ (root index.md, nav 1) — hub page, cards link to each subject
-
-tryhackme/                          → /tryhackme/
-├── index.md  (title: TryHackMe, nav 2, has_children)
-├── linux/                          → /tryhackme/linux/
-│   ├── index.md   (parent: TryHackMe, nav 1, has_children)
-│   ├── basics.md  (parent: Linux, grand_parent: TryHackMe)
-│   ├── system.md  (parent: Linux, grand_parent: TryHackMe)
-│   └── vim.md     (parent: Linux, grand_parent: TryHackMe)
-├── windows/                        → /tryhackme/windows/
-│   ├── index.md   (parent: TryHackMe, nav 2, has_children)
-│   └── basics.md  (parent: Windows, grand_parent: TryHackMe)
-├── networking/                     → /tryhackme/networking/
-│   ├── index.md          (parent: TryHackMe, nav 3, has_children)
-│   ├── basics.md         (parent: Networking, grand_parent: TryHackMe)
-│   └── mac-addresses.md  (parent: Networking, grand_parent: TryHackMe)
-├── recon/                          → /tryhackme/recon/
-│   ├── index.md          (parent: TryHackMe, nav 4, has_children)
-│   ├── nmap.md           (parent: Recon, grand_parent: TryHackMe)
-│   ├── web-recon.md      (parent: Recon, grand_parent: TryHackMe)
-│   └── search-skills.md  (parent: Recon, grand_parent: TryHackMe)
-└── defenses.md  (parent: TryHackMe, nav 5)       → /tryhackme/defenses/
-
-machine-learning/                   → /machine-learning/
-├── index.md  (title: Machine Learning, nav 3, has_children) — overview + fig-1-learning-types.png
-├── supervised-learning/            → /machine-learning/supervised-learning/
-│   ├── index.md          (parent: Machine Learning, nav 1, has_children)
-│   ├── regression.md     (parent: Supervised Learning, grand_parent: Machine Learning, nav 1)
-│   └── classification.md (parent: Supervised Learning, grand_parent: Machine Learning, nav 2)
-└── unsupervised-learning/          → /machine-learning/unsupervised-learning/
-    └── index.md          (parent: Machine Learning, nav 2) — clustering
-
-Images live next to the page that uses them (e.g. `supervised-learning/fig-1-regression.png`), embedded with `![alt]({{ "/full/path.png" | relative_url }})`.
-
-<future-subject>/                   → /<future-subject>/
-└── ...                             (same pattern: own index.md, own nav_order siblings to "TryHackMe" at root)
+<subject>/                    → /<subject>/
+├── index.md                  title: <Subject>, nav_order: N, has_children: true   (no parent)
+├── <page>.md                 parent: <Subject>
+└── <section>/                → /<subject>/<section>/
+    ├── index.md              parent: <Subject>, has_children: true   (short intro + bullet list of its pages)
+    ├── <page>.md             parent: <Section title>, grand_parent: <Subject title>
+    └── fig-N-<topic>.png     images live next to the page that uses them
 ```
 
-**Adding a child page to an existing section** (e.g. a new Linux topic):
-- Create the file at the matching path, e.g. `tryhackme/linux/<topic>.md`
-- Frontmatter: `parent: Linux`, `grand_parent: TryHackMe`, `nav_order: <next number>`
-- Add it to `tryhackme/linux/index.md`'s bullet list
+- `parent` / `grand_parent` must match the **`title:`** of the parent pages exactly, not the folder name.
+- Embed images with the full path: `![alt]({{ "/<subject>/<section>/fig-1-x.png" | relative_url }})`.
+- Inline `<script>` in a page: use `/* */` comments, never `//` (the theme's HTML compression puts it all on one line).
+
+**Adding a child page to an existing section:**
+- Create the file at the matching path, e.g. `<subject>/<section>/<topic>.md`
+- Frontmatter: `parent: <Section title>`, `grand_parent: <Subject title>`, `nav_order: <next number>`
+- Add it to that section's `index.md` bullet list (and the subject's `index.md` if it lists sections' pages)
 - Add the full path to `PRECACHE` in `sw.js`, bump the cache key
 - Don't add it to the root `index.md` card grid — that's subject-level only
 

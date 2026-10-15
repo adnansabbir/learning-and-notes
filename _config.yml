@@ -10,6 +10,9 @@ back_to_top_text: "Back to top"
 nav_sort: case_insensitive
 color_scheme: dark
 
+mermaid:
+  version: "11.4.1"
+
 plugins:
   - jekyll-remote-theme
 
