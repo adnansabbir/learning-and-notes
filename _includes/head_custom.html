@@ -229,3 +229,23 @@
     document.head.appendChild(s);
   });
 </script>
+
+<style>
+  /* ---- Runnable Python blocks (assets/js/pyrun.js) ---- */
+  .runnable { margin-bottom: 0 !important; }
+  .pyrun-bar { display: flex; align-items: center; gap: 0.75rem; margin: 0.4rem 0 1rem; }
+  .pyrun-btn {
+    padding: 0.3rem 0.9rem; border-radius: 6px; border: 1px solid rgba(9, 105, 218, 0.7);
+    background: rgba(9, 105, 218, 0.25); color: #fff; font: inherit; font-size: 0.85rem; cursor: pointer;
+  }
+  .pyrun-btn:disabled { opacity: 0.6; cursor: wait; }
+  .pyrun-status { font-size: 0.8rem; color: #999; }
+  .pyrun-output {
+    margin: -0.4rem 0 1.25rem; padding: 0.75rem; border-left: 3px solid rgba(9, 105, 218, 0.7);
+    background: rgba(255, 255, 255, 0.03);
+  }
+  .pyrun-text { margin: 0 0 0.5rem; white-space: pre-wrap; font-size: 0.8rem; background: none; }
+  .pyrun-error { color: #ff7b72; }
+  .pyrun-figure { display: block; max-width: 100%; height: auto; margin: 0.5rem 0; background: #fff; border-radius: 4px; }
+</style>
+<script defer src="{{ '/assets/js/pyrun.js' | relative_url }}"></script>

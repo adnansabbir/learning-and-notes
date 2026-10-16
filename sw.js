@@ -1,9 +1,10 @@
 ---
 ---
 const BASE = '{{ site.baseurl }}';
-const CACHE = 'notes-v19';
+const CACHE = 'notes-v20';
 
 const PRECACHE = [
+  `${BASE}/assets/js/pyrun.js`,
   `${BASE}/`,
   `${BASE}/tryhackme/`,
   `${BASE}/tryhackme/linux/`,

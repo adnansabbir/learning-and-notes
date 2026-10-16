@@ -163,4 +163,12 @@ https://colab.research.google.com/github/adnansabbir/learning-and-notes/blob/mai
 
 Prefer committing notebooks **with outputs** so they read as finished notes on GitHub without re-running.
 
-> An in-browser JupyterLite lab was tried and removed — Pyodide can't run PyTorch/TF, and browser-stored edits vs. repo files was confusing. Don't reintroduce it.
+> A full in-browser JupyterLite lab was tried and removed (20MB build, clunky on phone, browser-stored edits vs. repo files was confusing). Don't reintroduce it. Use runnable blocks instead (below).
+
+## Runnable Python blocks
+
+A ```` ```python ```` block followed on the next line by `{: .runnable}` gets a **▶ Run** button; output and matplotlib plots appear under it. Runs in the browser via Pyodide (`assets/js/pyrun.js`), downloaded (~25MB) only on the first tap, and works on phone. numpy/pandas/matplotlib/scikit-learn work; PyTorch/TensorFlow don't. All blocks on one page share variables like notebook cells.
+
+## Example note (template)
+
+`machine-learning/example-note.md` (→ `/machine-learning/example-note/`, hidden from sidebar and search) shows every feature: image, table, math, Mermaid, runnable Python, collapsible section. Its HTML comments explain the syntax. Copy it when starting a new note.
