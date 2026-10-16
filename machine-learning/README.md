@@ -7,5 +7,5 @@ Live notes: **[adnansabbir.github.io/learning-and-notes/machine-learning](https:
 | Section | Pages |
 |---|---|
 | Overview | Supervised vs. unsupervised learning |
-| Supervised Learning | Regression, Classification |
+| Supervised Learning | Regression, Classification, Training Data and Notation |
 | Unsupervised Learning | Clustering, Anomaly Detection, Dimensionality Reduction |

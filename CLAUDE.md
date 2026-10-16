@@ -128,6 +128,8 @@ Don't keep a list of pages here. The repo is the source of truth: run `find . -n
 - `parent` / `grand_parent` must match the **`title:`** of the parent pages exactly, not the folder name.
 - Embed images with the full path: `![alt]({{ "/<subject>/<section>/fig-1-x.png" | relative_url }})`.
 - Inline `<script>` in a page: use `/* */` comments, never `//` (the theme's HTML compression puts it all on one line).
+- Math (MathJax, loaded automatically only on pages that have math): write `$$x^{(i)}$$` for both inline and display math (display = `$$` on its own lines with blank lines around). Never `\(x\)`: Markdown eats the backslashes.
+- Diagrams: ```` ```mermaid ```` code blocks render (enabled in `_config.yml`).
 
 **Adding a child page to an existing section:**
 - Create the file at the matching path, e.g. `<subject>/<section>/<topic>.md`
