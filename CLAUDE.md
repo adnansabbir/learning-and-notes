@@ -129,7 +129,7 @@ Don't keep a list of pages here. The repo is the source of truth: run `find . -n
 - Embed images with the full path: `![alt]({{ "/<subject>/<section>/fig-1-x.png" | relative_url }})`.
 - Inline `<script>` in a page: use `/* */` comments, never `//` (the theme's HTML compression puts it all on one line).
 - Math (MathJax, loaded automatically only on pages that have math): write `$$x^{(i)}$$` for both inline and display math (display = `$$` on its own lines with blank lines around). Never `\(x\)`: Markdown eats the backslashes.
-- Diagrams: ```` ```mermaid ```` code blocks render (enabled in `_config.yml`).
+- Diagrams: ```` ```mermaid ```` code blocks render (enabled in `_config.yml`). They use Mermaid's dark theme (`_includes/mermaid_config.js`), because the default theme draws dark arrows that disappear on the dark site background.
 
 **Adding a child page to an existing section:**
 - Create the file at the matching path, e.g. `<subject>/<section>/<topic>.md`

@@ -7,5 +7,5 @@ Live notes: **[adnansabbir.github.io/learning-and-notes/machine-learning](https:
 | Section | Pages |
 |---|---|
 | Overview | Supervised vs. unsupervised learning |
-| Supervised Learning | Regression, Classification, Training Data and Notation, Plotting Data on a Graph |
+| Supervised Learning | Regression, Classification, Training Data and Notation, From Data to a Model Function |
 | Unsupervised Learning | Clustering, Anomaly Detection, Dimensionality Reduction |

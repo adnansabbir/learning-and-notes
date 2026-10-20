@@ -25,7 +25,7 @@ You give the model examples with an input (x) and the right output (y). It learn
 - **[Regression]({{ "/machine-learning/supervised-learning/regression/" | relative_url }}):** predicts a number, like a house price.
 - **[Classification]({{ "/machine-learning/supervised-learning/classification/" | relative_url }}):** predicts a category, like spam or not spam.
 - **[Training Data and Notation]({{ "/machine-learning/supervised-learning/training-data-and-notation/" | relative_url }}):** the symbols used to describe training data.
-- **[Plotting Data on a Graph]({{ "/machine-learning/supervised-learning/plotting-data-on-a-graph/" | relative_url }}):** how points, lines and curves show the link between x and y.
+- **[From Data to a Model Function]({{ "/machine-learning/supervised-learning/from-data-to-a-model-function/" | relative_url }}):** from plotting data to a trained function that predicts ŷ.
 
 ## Unsupervised learning
 
