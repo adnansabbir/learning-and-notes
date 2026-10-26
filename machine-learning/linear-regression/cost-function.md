@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "3.3 Cost Function"
+description: "The linear regression cost function step by step: prediction error, absolute error, mean absolute error (MAE) and J(w,b), with interactive sliders."
 parent: "3 Linear Regression"
 grand_parent: Machine Learning
 nav_order: 3

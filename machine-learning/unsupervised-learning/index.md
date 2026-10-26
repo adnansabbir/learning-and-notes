@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "2 Unsupervised Learning"
+description: "Unsupervised learning: finding structure in data that has no labels. Covers clustering, anomaly detection and dimensionality reduction with simple examples."
 parent: "Machine Learning"
 nav_order: 2
 has_children: true

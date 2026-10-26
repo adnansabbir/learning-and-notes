@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "2.3 Dimensionality Reduction"
+description: "Dimensionality reduction with an autoencoder: compress 64×64 digit images into 3 numbers shown as colors, then train a classifier on just 30 labeled examples."
 parent: "2 Unsupervised Learning"
 grand_parent: Machine Learning
 nav_order: 3

@@ -70,6 +70,7 @@ If a page is growing and starts to feel like too much to scroll through, use one
    ---
    layout: default
    title: Topic Name
+   description: "One sentence, under ~160 chars, on what this note covers (shown in search results)"
    parent: <Section title>
    grand_parent: <Subject title>
    nav_order: <next number>
@@ -126,6 +127,7 @@ Don't keep a list of pages here. The repo is the source of truth: run `find . -n
 ```
 
 - `parent` / `grand_parent` must match the **`title:`** of the parent pages exactly, not the folder name.
+- SEO: every note gets a `description:` (see above). `jekyll-sitemap` builds `/sitemap.xml` automatically; hidden pages like the example note set `sitemap: false`.
 - **Machine Learning is numbered by hand** so readers can track where they are: sections are `1 Supervised Learning`, `2 Unsupervised Learning`, `3 Linear Regression`; pages are `1.1 Regression`, `3.3 Cost Function`, etc. The number goes in both `title:` (quote it: `title: "3.4 Gradient Descent"`) and the `# H1`, and in the link text on index pages. Children's `parent:` must use the numbered title (`parent: "3 Linear Regression"`). A new page takes the next number in its section; a new section takes the next top-level number. Don't renumber existing pages unless asked. TryHackMe is not numbered.
 - Embed images with the full path: `![alt]({{ "/<subject>/<section>/fig-1-x.png" | relative_url }})`.
 - Inline `<script>` in a page: use `/* */` comments, never `//` (the theme's HTML compression puts it all on one line).

@@ -64,6 +64,7 @@
     btn.textContent = '▶ Run';
     var status = document.createElement('span');
     status.className = 'pyrun-status';
+    status.setAttribute('aria-live', 'polite');
     bar.appendChild(btn);
     bar.appendChild(status);
 

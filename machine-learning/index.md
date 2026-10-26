@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Machine Learning
+description: "My machine learning notes in plain words: supervised and unsupervised learning, then linear regression step by step, with interactive graphs and runnable Python."
 nav_order: 3
 has_children: true
 ---

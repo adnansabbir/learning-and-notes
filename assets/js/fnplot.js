@@ -99,6 +99,7 @@
     box.innerHTML = '';
     var formula = document.createElement('div');
     formula.className = 'fn-plot-formula';
+    formula.setAttribute('aria-live', 'polite');
     if (box.dataset.formula) box.appendChild(formula);
 
     var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fn-plot-svg', role: 'img', 'aria-label': 'Interactive graph' }, box);

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "2.2 Anomaly Detection"
+description: "Anomaly detection with a bank spending example: learn what normal looks like, flag what doesn't fit, and why an unusual transaction isn't automatically fraud."
 parent: "2 Unsupervised Learning"
 grand_parent: Machine Learning
 nav_order: 2

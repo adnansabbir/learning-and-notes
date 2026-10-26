@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "3.2 From Data to a Model Function"
+description: "From plotting points to a model function: what f(x) means, fitting a line to scattered data, y vs. ŷ, and what w and b control in ŷ = wx + b."
 parent: "3 Linear Regression"
 grand_parent: Machine Learning
 nav_order: 2

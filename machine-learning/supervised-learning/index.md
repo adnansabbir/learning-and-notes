@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "1 Supervised Learning"
+description: "Supervised learning explained simply: learning from examples with known answers. Covers regression (predicting numbers) and classification (categories)."
 parent: "Machine Learning"
 nav_order: 1
 has_children: true

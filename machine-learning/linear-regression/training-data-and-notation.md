@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "3.1 Training Data and Notation"
+description: "Machine learning notation for training data: x, y, m and the i-th training example (x(i), y(i)), explained with a simple house price table."
 parent: "3 Linear Regression"
 grand_parent: Machine Learning
 nav_order: 1

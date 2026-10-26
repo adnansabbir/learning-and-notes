@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "1.2 Classification"
+description: "Classification explained with a tumor example: binary vs. multiclass, using more than one input feature, and how classification differs from regression."
 parent: "1 Supervised Learning"
 grand_parent: Machine Learning
 nav_order: 2

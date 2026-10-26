@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "3 Linear Regression"
+description: "Linear regression step by step: training data notation, going from data to a model function, and the cost function, with interactive graphs you can drag."
 parent: "Machine Learning"
 nav_order: 3
 has_children: true

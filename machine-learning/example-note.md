@@ -4,6 +4,7 @@ title: Example Note
 parent: Machine Learning
 nav_exclude: true
 search_exclude: true
+sitemap: false
 ---
 
 <!--
@@ -11,6 +12,8 @@ search_exclude: true
 
   Frontmatter for a real note (remove nav_exclude / search_exclude):
     title:        shown in the sidebar, with its number, quoted: "3.4 Gradient Descent"
+    description:  one sentence (under ~160 characters) on what the note covers, quoted.
+                  Shown under the link in search results.
     parent:       the numbered TITLE of the section page, quoted: "3 Linear Regression"
     grand_parent: the TITLE of the subject page: Machine Learning
     nav_order:    position in the sidebar

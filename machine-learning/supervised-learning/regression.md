@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "1.1 Regression"
+description: "Regression explained with a house price example: predict a number from an input, using training data, a fitted curve and the y-hat (ŷ) notation."
 parent: "1 Supervised Learning"
 grand_parent: Machine Learning
 nav_order: 1

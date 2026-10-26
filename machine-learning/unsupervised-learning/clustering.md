@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "2.1 Clustering"
+description: "Clustering explained by removing the labels from a classification example, with news-article and music-listener examples and a comparison to classification."
 parent: "2 Unsupervised Learning"
 grand_parent: Machine Learning
 nav_order: 1

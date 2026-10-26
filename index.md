@@ -19,7 +19,7 @@ Personal technical learning journal. Command-first, short, rewarding to re-read.
   <a class="card" href="machine-learning/">
     <div class="card-emoji">🤖</div>
     <div class="card-title">Machine Learning</div>
-    <div class="card-desc">Concepts, tools, and hands-on experiments.</div>
+    <div class="card-desc">My notes as I learn machine learning, explained simply enough for a school student to follow.</div>
   </a>
 
 </div>

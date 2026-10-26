@@ -15,6 +15,7 @@ mermaid:
 
 plugins:
   - jekyll-remote-theme
+  - jekyll-sitemap
 
 exclude:
   - CLAUDE.md
