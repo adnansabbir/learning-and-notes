@@ -2,7 +2,7 @@
 
 > Notes on ML concepts, tools, and hands-on experiments.
 
-Live notes: **[adnansabbir.github.io/learning-and-notes/machine-learning](https://adnansabbir.github.io/learning-and-notes/machine-learning/)**
+Live notes: **[notes.adnansabbir.com/machine-learning](https://notes.adnansabbir.com/machine-learning/)**
 
 | Section | Pages |
 |---|---|

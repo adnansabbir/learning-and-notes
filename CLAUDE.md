@@ -4,7 +4,7 @@
 
 Adnan's personal technical learning journal. Started as TryHackMe's *Cyber Security 101* notes, now a general repo for whatever he's learning — each subject gets its own top-level folder. The site is his portfolio artifact — proof of the learning journey.
 
-Deployed to GitHub Pages at the site root (`/learning-and-notes/`). TryHackMe content lives under `/tryhackme/` within that. Readable on phone. Works offline (PWA).
+Deployed to GitHub Pages at **https://notes.adnansabbir.com/** (custom domain: `CNAME` file in the repo + a Cloudflare `CNAME notes → adnansabbir.github.io`, DNS only / grey cloud). The old `adnansabbir.github.io/learning-and-notes/` URLs redirect there. On the live site `site.baseurl` is empty; the local Docker preview still serves under `/learning-and-notes/`. Never hardcode either prefix: always use `relative_url` / `{{ site.baseurl }}`. TryHackMe content lives under `/tryhackme/`. Readable on phone. Works offline (PWA).
 
 **File paths mirror URL paths exactly.** `tryhackme/linux/basics.md` → `/tryhackme/linux/basics/`. When adding or moving a page, its location in the repo IS its URL (minus the `.md`, directory-index pages use `index.md`). No hidden `permalink:` overrides needed except on the rare page that intentionally breaks this convention.
 
@@ -78,7 +78,7 @@ If a page is growing and starts to feel like too much to scroll through, use one
    ```
    (Use `parent` only, no `grand_parent`, for a page one level deep like a section's own `index.md`.)
 2. Add the card to the relevant `index.md` card grid (emoji + title + one-line desc) — the section's own index, not the site root, unless it's a brand-new top-level subject.
-3. Add the path to `PRECACHE` array in `sw.js` (for offline support) — full path including `/learning-and-notes/` prefix.
+3. Add the path to `PRECACHE` array in `sw.js` (for offline support), written as `` `${BASE}/<path>/` `` like the existing entries.
 4. Bump the cache key in `sw.js` (`notes-vN` → `notes-vN+1`)
 
 ## Tech stack

@@ -3,7 +3,7 @@
 > Personal cybersecurity learning journal. Practical-first: command → output → insight.
 > Notes from working through TryHackMe's **Cyber Security 101** path alongside hands-on lab work.
 
-Live notes: **[adnansabbir.github.io/learning-and-notes/tryhackme](https://adnansabbir.github.io/learning-and-notes/tryhackme/)**
+Live notes: **[notes.adnansabbir.com/tryhackme](https://notes.adnansabbir.com/tryhackme/)**
 
 ---
 

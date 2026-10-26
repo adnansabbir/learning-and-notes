@@ -2,7 +2,7 @@
 
 Personal technical learning journal — practical-first: command → output → insight.
 
-Live site: **[adnansabbir.github.io/learning-and-notes](https://adnansabbir.github.io/learning-and-notes/)**
+Live site: **[notes.adnansabbir.com](https://notes.adnansabbir.com/)**
 
 Each subject lives in its own top-level folder with its own README.
 
