@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Training Data and Notation
-parent: Supervised Learning
+title: "3.1 Training Data and Notation"
+parent: "3 Linear Regression"
 grand_parent: Machine Learning
-nav_order: 3
+nav_order: 1
 ---
 
-# Understanding Training Data
+# 3.1 Training Data and Notation
 
 ## Quick summary
 

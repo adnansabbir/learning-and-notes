@@ -1,12 +1,12 @@
 ---
 layout: default
-title: From Data to a Model Function
-parent: Supervised Learning
+title: "3.2 From Data to a Model Function"
+parent: "3 Linear Regression"
 grand_parent: Machine Learning
-nav_order: 4
+nav_order: 2
 ---
 
-# From Data to a Model Function
+# 3.2 From Data to a Model Function
 
 A graph helps us see how $$y$$ changes as $$x$$ changes. We will use this to understand how a trained model produces predictions.
 

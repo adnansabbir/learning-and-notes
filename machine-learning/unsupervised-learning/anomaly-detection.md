@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Anomaly Detection
-parent: Unsupervised Learning
+title: "2.2 Anomaly Detection"
+parent: "2 Unsupervised Learning"
 grand_parent: Machine Learning
 nav_order: 2
 ---
 
-# Anomaly Detection
+# 2.2 Anomaly Detection
 
 ## Quick summary
 

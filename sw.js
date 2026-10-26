@@ -1,10 +1,11 @@
 ---
 ---
 const BASE = '{{ site.baseurl }}';
-const CACHE = 'notes-v22';
+const CACHE = 'notes-v24';
 
 const PRECACHE = [
   `${BASE}/assets/js/pyrun.js`,
+  `${BASE}/assets/js/fnplot.js`,
   `${BASE}/`,
   `${BASE}/tryhackme/`,
   `${BASE}/tryhackme/linux/`,
@@ -25,8 +26,10 @@ const PRECACHE = [
   `${BASE}/machine-learning/supervised-learning/`,
   `${BASE}/machine-learning/supervised-learning/regression/`,
   `${BASE}/machine-learning/supervised-learning/classification/`,
-  `${BASE}/machine-learning/supervised-learning/training-data-and-notation/`,
-  `${BASE}/machine-learning/supervised-learning/from-data-to-a-model-function/`,
+  `${BASE}/machine-learning/linear-regression/`,
+  `${BASE}/machine-learning/linear-regression/training-data-and-notation/`,
+  `${BASE}/machine-learning/linear-regression/from-data-to-a-model-function/`,
+  `${BASE}/machine-learning/linear-regression/cost-function/`,
   `${BASE}/machine-learning/unsupervised-learning/`,
   `${BASE}/machine-learning/unsupervised-learning/clustering/`,
   `${BASE}/machine-learning/unsupervised-learning/anomaly-detection/`,

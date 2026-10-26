@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Dimensionality Reduction
-parent: Unsupervised Learning
+title: "2.3 Dimensionality Reduction"
+parent: "2 Unsupervised Learning"
 grand_parent: Machine Learning
 nav_order: 3
 ---
@@ -69,7 +69,7 @@ nav_order: 3
 }
 </style>
 
-# Dimensionality Reduction
+# 2.3 Dimensionality Reduction
 
 Hover over a dotted term for a quick reminder. On mobile, tap it to open the explanation. Tap outside the explanation or press **Close** to dismiss it.
 
@@ -221,7 +221,7 @@ A few training pairs might look like this:
 
 We repeat this for all 30 labeled examples and train the classifier.
 
-Remember [classification]({{ "/machine-learning/supervised-learning/classification/" | relative_url }})? We give the model inputs **x** and known labels **y**, and it learns how the inputs relate to those labels.
+Remember [1.2 Classification]({{ "/machine-learning/supervised-learning/classification/" | relative_url }})? We give the model inputs **x** and known labels **y**, and it learns how the inputs relate to those labels.
 
 Here:
 

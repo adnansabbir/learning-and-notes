@@ -126,6 +126,7 @@ Don't keep a list of pages here. The repo is the source of truth: run `find . -n
 ```
 
 - `parent` / `grand_parent` must match the **`title:`** of the parent pages exactly, not the folder name.
+- **Machine Learning is numbered by hand** so readers can track where they are: sections are `1 Supervised Learning`, `2 Unsupervised Learning`, `3 Linear Regression`; pages are `1.1 Regression`, `3.3 Cost Function`, etc. The number goes in both `title:` (quote it: `title: "3.4 Gradient Descent"`) and the `# H1`, and in the link text on index pages. Children's `parent:` must use the numbered title (`parent: "3 Linear Regression"`). A new page takes the next number in its section; a new section takes the next top-level number. Don't renumber existing pages unless asked. TryHackMe is not numbered.
 - Embed images with the full path: `![alt]({{ "/<subject>/<section>/fig-1-x.png" | relative_url }})`.
 - Inline `<script>` in a page: use `/* */` comments, never `//` (the theme's HTML compression puts it all on one line).
 - Math (MathJax, loaded automatically only on pages that have math): write `$$x^{(i)}$$` for both inline and display math (display = `$$` on its own lines with blank lines around). Never `\(x\)`: Markdown eats the backslashes.
@@ -168,6 +169,10 @@ Prefer committing notebooks **with outputs** so they read as finished notes on G
 ## Runnable Python blocks
 
 A ```` ```python ```` block followed on the next line by `{: .runnable}` gets a **▶ Run** button; output and matplotlib plots appear under it. Runs in the browser via Pyodide (`assets/js/pyrun.js`), downloaded (~25MB) only on the first tap, and works on phone. numpy/pandas/matplotlib/scikit-learn work; PyTorch/TensorFlow don't. All blocks on one page share variables like notebook cells.
+
+## Interactive graphs with sliders
+
+One reusable component, `assets/js/fnplot.js`: a `<div class="fn-plot" data-fn="w * x + b" data-params="w: -3..3 step 0.1 = 1; ..." ...>` draws any formula on fixed axes with a slider per parameter. Variants are extra attributes on the same div (they combine): `data-probe="x"` (pick an input, show the prediction dot, `{yhat}`), `data-errors` (dotted gap + error from every point to the line, `{total}` `{mean}` `{m}`). All options are documented at the top of the file; `cost-function.md` uses all three. **Extend this file with a new attribute for new graph needs; don't create another graph script.**
 
 ## Example note (template)
 

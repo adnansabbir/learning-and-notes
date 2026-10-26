@@ -10,12 +10,13 @@ search_exclude: true
   TEMPLATE FOR NEW NOTES. Copy this file, then delete what you don't need.
 
   Frontmatter for a real note (remove nav_exclude / search_exclude):
-    title:        shown in the sidebar
-    parent:       the TITLE of the section page (e.g. Supervised Learning)
-    grand_parent: the TITLE of the subject page (e.g. Machine Learning)
+    title:        shown in the sidebar, with its number, quoted: "3.4 Gradient Descent"
+    parent:       the numbered TITLE of the section page, quoted: "3 Linear Regression"
+    grand_parent: the TITLE of the subject page: Machine Learning
     nav_order:    position in the sidebar
-  The file's location is its URL: machine-learning/supervised-learning/foo.md
-  -> /machine-learning/supervised-learning/foo/
+  Put the same number in the # heading, and add the page to its section's index.md.
+  The file's location is its URL: machine-learning/linear-regression/foo.md
+  -> /machine-learning/linear-regression/foo/
 
   These HTML comments don't show up on the site.
 -->

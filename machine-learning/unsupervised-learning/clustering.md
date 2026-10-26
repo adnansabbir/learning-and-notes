@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Clustering
-parent: Unsupervised Learning
+title: "2.1 Clustering"
+parent: "2 Unsupervised Learning"
 grand_parent: Machine Learning
 nav_order: 1
 ---
 
-# Clustering
+# 2.1 Clustering
 
 ## Quick summary
 

@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Regression
-parent: Supervised Learning
+title: "1.1 Regression"
+parent: "1 Supervised Learning"
 grand_parent: Machine Learning
 nav_order: 1
 ---
 
-# Regression
+# 1.1 Regression
 
 ## Quick summary
 

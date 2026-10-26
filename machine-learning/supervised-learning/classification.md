@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Classification
-parent: Supervised Learning
+title: "1.2 Classification"
+parent: "1 Supervised Learning"
 grand_parent: Machine Learning
 nav_order: 2
 ---
 
-# Classification
+# 1.2 Classification
 
 ## Quick summary
 

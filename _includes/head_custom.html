@@ -249,3 +249,28 @@
   .pyrun-figure { display: block; max-width: 100%; height: auto; margin: 0.5rem 0; background: #fff; border-radius: 4px; }
 </style>
 <script defer src="{{ '/assets/js/pyrun.js' | relative_url }}"></script>
+
+<style>
+  /* ---- Interactive function plots (assets/js/fnplot.js) ---- */
+  .fn-plot { margin: 1rem 0 1.5rem; padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 8px; background: rgba(255, 255, 255, 0.02); }
+  .fn-plot-formula { font-family: Georgia, 'Times New Roman', serif; font-size: 1.15rem; text-align: center; margin-bottom: 0.5rem; color: #e6edf3; }
+  .fn-plot-formula { display: flex; flex-wrap: wrap; justify-content: center; column-gap: 1.5rem; row-gap: 0.2rem; }
+  .fn-plot-formula-part { white-space: nowrap; }
+  .fn-plot-svg { display: block; width: 100%; height: auto; touch-action: pan-y; }
+  .fn-plot-grid line { stroke: rgba(255, 255, 255, 0.08); stroke-width: 1; }
+  .fn-plot-axis line { stroke: rgba(255, 255, 255, 0.45); stroke-width: 1.5; }
+  .fn-plot-frame { fill: none; stroke: rgba(255, 255, 255, 0.2); }
+  .fn-plot-tick { fill: #9da5ae; font-size: 13px; }
+  .fn-plot-label { fill: #e6edf3; font-size: 16px; font-style: italic; font-family: Georgia, serif; }
+  .fn-plot-line { fill: none; stroke: #58a6ff; stroke-width: 3; stroke-linecap: round; }
+  .fn-plot-points path { stroke: #ff6b6b; stroke-width: 3; stroke-linecap: round; }
+  .fn-plot-guide { stroke: #f2cc60; stroke-width: 2.5; stroke-dasharray: 3 6; stroke-linecap: round; }
+  .fn-plot-marker { fill: #ff8080; stroke: #ffd6d6; stroke-width: 1.5; filter: drop-shadow(0 0 4px #ff5c5c) drop-shadow(0 0 10px rgba(255, 92, 92, 0.7)); }
+  .fn-plot-marker-label { fill: #ff9b9b; font-size: 15px; font-weight: 600; }
+  .fn-plot-error-label { fill: #f2cc60; font-size: 13px; font-weight: 600; paint-order: stroke; stroke: #27262b; stroke-width: 4px; stroke-linejoin: round; }
+  .fn-plot-controls { display: grid; gap: 0.6rem; margin-top: 0.75rem; }
+  .fn-plot-slider { display: flex; align-items: center; gap: 0.75rem; }
+  .fn-plot-name { min-width: 5.5rem; font-family: ui-monospace, Menlo, monospace; font-size: 0.95rem; color: #e6edf3; }
+  .fn-plot-slider input[type=range] { flex: 1; min-width: 0; height: 2rem; accent-color: #58a6ff; }
+</style>
+<script defer src="{{ '/assets/js/fnplot.js' | relative_url }}"></script>
