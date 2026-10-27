@@ -139,7 +139,7 @@ $$
 \text{Absolute error} = |\hat{y} - y|
 $$
 
-The vertical bars mean “take the absolute value.” Both $$|0.55|$$ and $$|-0.55|$$ give us 0.55.
+The vertical bars mean “take the absolute value.” Both $$\lvert 0.55 \rvert$$ and $$\lvert -0.55 \rvert$$ give us 0.55.
 
 Using our prediction of 3 and observed value of 2.45:
 
