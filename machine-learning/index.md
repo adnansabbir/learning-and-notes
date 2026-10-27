@@ -41,6 +41,8 @@ A closer look at the simplest model, a straight line fitted to data.
 - **[3.1 Training Data and Notation]({{ "/machine-learning/linear-regression/training-data-and-notation/" | relative_url }}):** the symbols used to describe training data.
 - **[3.2 From Data to a Model Function]({{ "/machine-learning/linear-regression/from-data-to-a-model-function/" | relative_url }}):** from plotting data to a trained function that predicts ŷ.
 - **[3.3 Cost Function]({{ "/machine-learning/linear-regression/cost-function/" | relative_url }}):** one number that says how well a line fits.
+- **[3.4 Cost Surface]({{ "/machine-learning/linear-regression/cost-surface/" | relative_url }}):** the cost for every w and b as a 3D landscape you can rotate.
+- **[3.5 Cost Surface Math]({{ "/machine-learning/linear-regression/cost-surface-math/" | relative_url }}):** the maths behind the single lowest point.
 
 ## Remember
 

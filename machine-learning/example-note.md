@@ -11,7 +11,7 @@ sitemap: false
   TEMPLATE FOR NEW NOTES. Copy this file, then delete what you don't need.
 
   Frontmatter for a real note (remove nav_exclude / search_exclude):
-    title:        shown in the sidebar, with its number, quoted: "3.4 Gradient Descent"
+    title:        shown in the sidebar, with its number, quoted: "3.6 Gradient Descent"
     description:  one sentence (under ~160 characters) on what the note covers, quoted.
                   Shown under the link in search results.
     parent:       the numbered TITLE of the section page, quoted: "3 Linear Regression"

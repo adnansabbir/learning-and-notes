@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "3.3 Cost Function"
-description: "The linear regression cost function step by step: prediction error, absolute error, mean absolute error (MAE) and J(w,b), with interactive sliders."
+description: "The linear regression cost function step by step: prediction error, squared error, mean squared error and J(w,b), with interactive sliders."
 parent: "3 Linear Regression"
 grand_parent: Machine Learning
 nav_order: 3
@@ -13,7 +13,9 @@ nav_order: 3
 
 Let's explore how changing $$w$$ and $$b$$ changes our predictions, then build a way to measure how well those predictions fit the data.
 
-Our goal is to find parameter values that make this error as small as possible.
+We will square the difference between each prediction and its observed value, then combine these squared errors into one number called the **cost**.
+
+Our goal is to find parameter values that make this cost as small as possible.
 
 ## Our model function
 
@@ -133,32 +135,61 @@ The prediction is **0.55 units above** the observed value.
 
 If the prediction were below the observed value, this difference would be negative.
 
-For now, we only want to know **how far apart the two values are**, regardless of which one is higher. We use the **absolute value**:
+We want errors above and below the observations to contribute to our cost. If we simply added the signed differences, positive and negative values could cancel.
+
+For example, one prediction could be 2 units too high and another 2 units too low:
 
 $$
-\text{Absolute error} = |\hat{y} - y|
+2 + (-2) = 0
 $$
 
-The vertical bars mean “take the absolute value.” Both $$\lvert 0.55 \rvert$$ and $$\lvert -0.55 \rvert$$ give us 0.55.
+The total is zero, even though both predictions are wrong.
+
+### Square the difference
+
+To prevent this cancellation, we can **square each difference**:
+
+$$
+\text{Squared error} = (\hat{y} - y)^2
+$$
+
+The part inside the brackets is still **prediction minus observed value**. The new part is the square: multiply that difference by itself.
+
+For errors of 2 and −2:
+
+$$
+2^2 = 4,\qquad (-2)^2 = 4
+$$
+
+Both contribute the same positive amount. If a prediction matches its observation, its squared error is zero.
 
 Using our prediction of 3 and observed value of 2.45:
 
 $$
-|\hat{y} - y| = |3 - 2.45| = 0.55
+(\hat{y} - y)^2 = (3 - 2.45)^2 = 0.55^2 = 0.3025
 $$
 
-On the graph, this is the length of the **vertical gap** between the observed point and the prediction at the same input.
+On the graph, the vertical gap has a length of 0.55. **The squared error is that gap length squared**, which is 0.3025.
 
-If the prediction matches the observation, the error is zero.
+### Larger errors contribute more
+
+Squaring also gives larger errors more weight:
+
+- An error of 1 contributes $$1^2 = 1$$.
+- An error of 3 contributes $$3^2 = 9$$.
+
+The second error is three times as large, but contributes nine times as much to the cost.
+
+So squaring does two useful things: it prevents positive and negative differences from cancelling, and it makes larger errors contribute more strongly.
 
 ### Writing the error for a specific example
 
 We use $$i$$ to identify a particular training example. Adding this example number to our formula gives:
 
 $$
-\text{Absolute error for example } i
+\text{Squared error for example } i
 =
-\left|\hat{y}^{(i)} - y^{(i)}\right|
+\left(\hat{y}^{(i)} - y^{(i)}\right)^2
 $$
 
 Here:
@@ -177,11 +208,11 @@ One gap tells us about one example. To judge the whole line, we need to look at 
      data-fn="w * x + b"
      data-params="w: -3..3 step 0.1 = 1.2; b: -3..5 step 0.1 = 0.6"
      data-errors
-     data-formula="Total absolute error = {total} | m = {m} | MAE = {mean}"
+     data-formula="w = {w} | b = {b}"
      data-points="0.5,2.15 1,1.15 1.5,2.95 2,2.45 2.3,5.5 2.5,4.15 3,3.65"
      data-x="0..3.5" data-y="-2..6"></div>
 
-Each yellow segment shows the absolute error for one training example.
+Each yellow segment shows the vertical gap between a prediction and its observed value. We square each gap length to calculate its contribution to the cost.
 
 Move $$w$$ and $$b$$. Some gaps become smaller while others become larger.
 
@@ -191,105 +222,130 @@ $$
 \hat{y} = 1.2 \times 2.3 + 0.6 = 3.36
 $$
 
-Its absolute error is the gap between this prediction and the observed value of 5.5:
+Its prediction is below the observed value of 5.5:
 
 $$
-|3.36 - 5.5| = 2.14
+\hat{y} - y = 3.36 - 5.5 = -2.14
 $$
 
-Moving the line closer to this point could reduce its error, but might increase the errors for other points.
+Squaring this difference gives:
+
+$$
+(\hat{y} - y)^2 = (-2.14)^2 = 4.5796
+$$
+
+Moving the line closer to this point could reduce its squared error, but might increase the errors for other points.
 
 We need a way to consider all those errors together.
 
-## Add up the errors
+## Add up the squared errors
 
-We can add every absolute error to get the **total absolute error**:
+We can add every squared error to get the **total squared error**:
 
 $$
-\text{Total absolute error}
+\text{Total squared error}
 =
 \sum_{i=1}^{m}
-\left|\hat{y}^{(i)} - y^{(i)}\right|
+\left(\hat{y}^{(i)} - y^{(i)}\right)^2
 $$
 
-The symbol $$\sum$$ means **sum**, or “add them all together.” Inside the sum is the same absolute-error calculation we used for one example.
+The symbol $$\sum$$ means **sum**, or “add them all together.” Inside the sum is the same squared-error calculation we used for one example.
 
 It tells us to:
 
 1. Start with example $$i = 1$$.
-2. Calculate its absolute error.
+2. Calculate its squared error.
 3. Repeat for every example, up to $$m$$.
-4. Add the errors together.
+4. Add the squared errors together.
 
 Here, $$m$$ is the number of training examples. Our graph has seven points, so $$m = 7$$.
 
-With $$w = 1.2$$ and $$b = 0.6$$, the errors are:
+With $$w = 1.2$$ and $$b = 0.6$$, the calculations are:
 
-| Input | Observed value | Prediction | Absolute error |
-|---:|---:|---:|---:|
-| 0.5 | 2.15 | 1.20 | 0.95 |
-| 1 | 1.15 | 1.80 | 0.65 |
-| 1.5 | 2.95 | 2.40 | 0.55 |
-| 2 | 2.45 | 3.00 | 0.55 |
-| 2.3 | 5.50 | 3.36 | 2.14 |
-| 2.5 | 4.15 | 3.60 | 0.55 |
-| 3 | 3.65 | 4.20 | 0.55 |
+| Input | Observed value | Prediction | Prediction − observed | Squared error |
+|---:|---:|---:|---:|---:|
+| 0.5 | 2.15 | 1.20 | −0.95 | 0.9025 |
+| 1 | 1.15 | 1.80 | 0.65 | 0.4225 |
+| 1.5 | 2.95 | 2.40 | −0.55 | 0.3025 |
+| 2 | 2.45 | 3.00 | 0.55 | 0.3025 |
+| 2.3 | 5.50 | 3.36 | −2.14 | 4.5796 |
+| 2.5 | 4.15 | 3.60 | −0.55 | 0.3025 |
+| 3 | 3.65 | 4.20 | 0.55 | 0.3025 |
 
-Adding the absolute errors gives:
-
-$$
-0.95 + 0.65 + 0.55 + 0.55 + 2.14 + 0.55 + 0.55 = 5.94
-$$
-
-As you move the sliders, watch how the individual errors and their total change.
-
-## Find the average error
-
-A total depends partly on how many examples we have. With thousands or millions of examples, adding all the errors can produce a large number.
-
-Instead, we can ask:
-
-> On average, how far is each prediction from its observed value?
-
-We divide the total absolute error by the number of examples:
+Adding the squared errors gives:
 
 $$
-\text{Mean absolute error}
+0.9025 + 0.4225 + 0.3025 + 0.3025 + 4.5796 + 0.3025 + 0.3025
+=
+7.1146
+$$
+
+Notice how much the point at $$(2.3, 5.5)$$ contributes to this total. Its gap is larger than the others, and squaring makes that difference more pronounced.
+
+## Find the average squared error
+
+A total depends partly on how many examples we have. With thousands or millions of examples, adding all the squared errors can produce a large number.
+
+Instead, we can calculate the **average squared error**.
+
+We divide the total squared error by the number of examples:
+
+$$
+\text{Mean squared error}
 =
 \frac{1}{m}
 \sum_{i=1}^{m}
-\left|\hat{y}^{(i)} - y^{(i)}\right|
+\left(\hat{y}^{(i)} - y^{(i)}\right)^2
 $$
 
-The sum still adds all the absolute errors. The new part, $$\frac{1}{m}$$, divides that total by the number of examples.
+The sum still adds all the squared errors. The new part, $$\frac{1}{m}$$, divides that total by the number of examples.
 
-This is called **mean absolute error**, or **MAE**. “Mean” simply means average.
+This is called **mean squared error**, or **MSE**. “Mean” simply means average.
 
-For our current settings, the total is 5.94 and we have seven examples:
+For our current settings, the total is 7.1146 and we have seven examples:
 
 $$
-\text{MAE} = \frac{5.94}{7} \approx 0.85
+\text{MSE} = \frac{7.1146}{7} \approx 1.0164
 $$
 
-So the predictions differ from the observed values by approximately **0.85 units on average**.
+This is the average of the **squared differences**, not the average gap length and not a percentage.
 
-This is an average error in the same units as $$y$$, not a percentage.
+If $$y$$ is measured in a particular unit, MSE is measured in that unit squared.
 
 ## What is the cost function?
 
 We now have one number that measures how well a particular line fits all our training examples.
 
-We can use this mean absolute error as a **cost function**, written as $$J(w,b)$$:
+MSE can be used directly as a cost function. For our introduction to gradient descent, we will use a common version that is **half the MSE**, written as $$J(w,b)$$:
 
 $$
 J(w,b)
 =
-\frac{1}{m}
+\frac{1}{2m}
 \sum_{i=1}^{m}
-\left|\hat{y}^{(i)} - y^{(i)}\right|
+\left(\hat{y}^{(i)} - y^{(i)}\right)^2
 $$
 
-The calculation has not changed. We have given it a name: $$J(w,b)$$ means **the cost for a particular choice of w and b**, using our fixed training dataset.
+The squared differences and their sum are unchanged. We now divide by $$2m$$ instead of $$m$$, so the result is half as large:
+
+$$
+J(w,b) = \frac{1}{2}\times\text{MSE}
+$$
+
+The extra factor of $$\frac{1}{2}$$ makes the derivative simpler when we study gradient descent. We will see how that works in 3.6 Gradient Descent.
+
+It does **not** change which values of $$w$$ and $$b$$ give the smallest cost. Halving every candidate's cost keeps their order the same.
+
+For our current parameters:
+
+$$
+J(1.2,0.6)
+=
+\frac{7.1146}{2\times7}
+\approx 0.5082
+$$
+
+So $$J(w,b)$$ means **the cost for a particular choice of w and b**, using our fixed training dataset. Here, that cost is half the mean squared error.
 
 ### Put the model's formula inside the cost function
 
@@ -306,9 +362,9 @@ First, replace $$\hat{y}^{(i)}$$ in the cost function with $$f_{w,b}(x^{(i)})$$:
 $$
 J(w,b)
 =
-\frac{1}{m}
+\frac{1}{2m}
 \sum_{i=1}^{m}
-\left|f_{w,b}(x^{(i)}) - y^{(i)}\right|
+\left(f_{w,b}(x^{(i)}) - y^{(i)}\right)^2
 $$
 
 Now replace that function with its calculation, $$wx^{(i)} + b$$:
@@ -316,23 +372,27 @@ Now replace that function with its calculation, $$wx^{(i)} + b$$:
 $$
 J(w,b)
 =
-\frac{1}{m}
+\frac{1}{2m}
 \sum_{i=1}^{m}
-\left|(wx^{(i)} + b) - y^{(i)}\right|
+\left((wx^{(i)} + b) - y^{(i)}\right)^2
 $$
 
 These are the same cost function, just written in different ways.
 
-For each example, we calculate a prediction, compare it with the observed value, and take the absolute error. Then we average those errors.
+For each example, we calculate a prediction, subtract the observed value, and square the difference. Then we add those squared errors and divide by $$2m$$.
 
 ### What does the cost tell us?
 
 For our fixed dataset, changing $$w$$ and $$b$$ changes the predictions, which changes the cost.
 
-- **Smaller cost:** smaller absolute errors on average.
-- **Larger cost:** larger absolute errors on average.
+- **Smaller cost:** smaller squared errors on average.
+- **Larger cost:** larger squared errors on average.
 
-MAE is one choice of cost function. Here, we used it to build the idea step by step.
+A cost of zero means every prediction matches its observed value exactly.
+
+For scattered data like ours, a single straight line cannot pass through every point, so even the best-fitting line will have a cost above zero.
+
+Squared error is one choice of cost function. Here, we used it to build the idea step by step.
 
 ## Finding the best w and b
 
@@ -348,17 +408,20 @@ There are different approaches, including:
 
 - **Gradient descent:** repeatedly adjusts parameters to reduce the cost.
 - **Grid search:** tries combinations of parameter values and compares their costs.
-- **Linear programming:** can be used to find parameters that minimize the absolute-error cost we built here.
+- **Least-squares solvers:** calculate parameters that minimize the squared-error cost directly, without taking gradient-descent steps.
 
-We will explore **gradient descent** in the next note. We will introduce it using a **squared-error cost**, which gives us a smooth function to work with. The goal stays the same: adjust the parameters to reduce the chosen cost.
+Next, **[3.4 Cost Surface]({{ "/machine-learning/linear-regression/cost-surface/" | relative_url }})** shows what this cost looks like for every $$w$$ and $$b$$. After that, 3.6 Gradient Descent explores how to find its lowest point, using the squared-error cost we built here.
 
 ## Remember
 
-- **w** changes the slope; **b** shifts the line up or down.
-- **Absolute error** measures the vertical gap between a prediction and its observed value.
-- We calculate an error for **each training example**.
-- Adding those errors gives the **total absolute error**.
-- Dividing by $$m$$ gives the **mean absolute error**.
-- **J(w,b)** names the cost for a particular choice of parameters.
+- $$w$$ changes the slope; $$b$$ shifts the line up or down.
+- $$\hat{y}$$ is a prediction; $$y$$ is the observed value.
+- **Prediction minus observed value** gives a signed difference.
+- Squaring that difference prevents positive and negative errors from cancelling.
+- Squaring also gives **larger errors more weight**.
+- Adding the squared errors gives the **total squared error**.
+- Dividing by $$m$$ gives the **mean squared error**, or **MSE**.
+- Our cost $$J(w,b)$$ divides by $$2m$$, so it equals **half the MSE**.
+- The extra factor of $$\frac{1}{2}$$ does not change which parameters minimize the cost.
 - Training aims to find parameter values that **minimize the chosen cost**.
 - A good fit describes the data's overall pattern; it does not require every prediction to match an observation exactly.

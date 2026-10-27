@@ -1,7 +1,7 @@
 ---
 ---
 const BASE = '{{ site.baseurl }}';
-const CACHE = 'notes-v24';
+const CACHE = 'notes-v25';
 
 const PRECACHE = [
   `${BASE}/assets/js/pyrun.js`,
@@ -30,6 +30,8 @@ const PRECACHE = [
   `${BASE}/machine-learning/linear-regression/training-data-and-notation/`,
   `${BASE}/machine-learning/linear-regression/from-data-to-a-model-function/`,
   `${BASE}/machine-learning/linear-regression/cost-function/`,
+  `${BASE}/machine-learning/linear-regression/cost-surface/`,
+  `${BASE}/machine-learning/linear-regression/cost-surface-math/`,
   `${BASE}/machine-learning/unsupervised-learning/`,
   `${BASE}/machine-learning/unsupervised-learning/clustering/`,
   `${BASE}/machine-learning/unsupervised-learning/anomaly-detection/`,

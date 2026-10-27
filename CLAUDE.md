@@ -79,7 +79,7 @@ If a page is growing and starts to feel like too much to scroll through, use one
    (Use `parent` only, no `grand_parent`, for a page one level deep like a section's own `index.md`.)
 2. Add the card to the relevant `index.md` card grid (emoji + title + one-line desc) — the section's own index, not the site root, unless it's a brand-new top-level subject.
 3. Add the path to `PRECACHE` array in `sw.js` (for offline support), written as `` `${BASE}/<path>/` `` like the existing entries.
-4. Bump the cache key in `sw.js` (`notes-vN` → `notes-vN+1`)
+4. Bump the cache key in `sw.js` (`notes-vN` → `notes-vN+1`). Also bump it whenever `assets/js/*.js` or `_includes/head_custom.html` changes, otherwise returning visitors get the old script from the service worker cache. **Bump once per push, not per local edit:** the new number is the last *pushed* version + 1 (check with `git show origin/main:sw.js | grep CACHE`). While previewing locally, use the ↻ button instead of bumping again.
 
 ## Tech stack
 
@@ -128,7 +128,7 @@ Don't keep a list of pages here. The repo is the source of truth: run `find . -n
 
 - `parent` / `grand_parent` must match the **`title:`** of the parent pages exactly, not the folder name.
 - SEO: every note gets a `description:` (see above). `jekyll-sitemap` builds `/sitemap.xml` automatically; hidden pages like the example note set `sitemap: false`.
-- **Machine Learning is numbered by hand** so readers can track where they are: sections are `1 Supervised Learning`, `2 Unsupervised Learning`, `3 Linear Regression`; pages are `1.1 Regression`, `3.3 Cost Function`, etc. The number goes in both `title:` (quote it: `title: "3.4 Gradient Descent"`) and the `# H1`, and in the link text on index pages. Children's `parent:` must use the numbered title (`parent: "3 Linear Regression"`). A new page takes the next number in its section; a new section takes the next top-level number. Don't renumber existing pages unless asked. TryHackMe is not numbered.
+- **Machine Learning is numbered by hand** so readers can track where they are: sections are `1 Supervised Learning`, `2 Unsupervised Learning`, `3 Linear Regression`; pages are `1.1 Regression`, `3.3 Cost Function`, etc. The number goes in both `title:` (quote it: `title: "3.6 Gradient Descent"`) and the `# H1`, and in the link text on index pages. Children's `parent:` must use the numbered title (`parent: "3 Linear Regression"`). A new page takes the next number in its section; a new section takes the next top-level number. Don't renumber existing pages unless asked. TryHackMe is not numbered.
 - Embed images with the full path: `![alt]({{ "/<subject>/<section>/fig-1-x.png" | relative_url }})`.
 - Inline `<script>` in a page: use `/* */` comments, never `//` (the theme's HTML compression puts it all on one line).
 - Math (MathJax, loaded automatically only on pages that have math): write `$$x^{(i)}$$` for both inline and display math (display = `$$` on its own lines with blank lines around). Never `\(x\)`: Markdown eats the backslashes.
@@ -174,7 +174,7 @@ A ```` ```python ```` block followed on the next line by `{: .runnable}` gets a 
 
 ## Interactive graphs with sliders
 
-One reusable component, `assets/js/fnplot.js`: a `<div class="fn-plot" data-fn="w * x + b" data-params="w: -3..3 step 0.1 = 1; ..." ...>` draws any formula on fixed axes with a slider per parameter. Variants are extra attributes on the same div (they combine): `data-probe="x"` (pick an input, show the prediction dot, `{yhat}`), `data-errors` (dotted gap + error from every point to the line, `{total}` `{mean}` `{m}`). All options are documented at the top of the file; `cost-function.md` uses all three. **Extend this file with a new attribute for new graph needs; don't create another graph script.**
+One reusable component, `assets/js/fnplot.js`: a `<div class="fn-plot" data-fn="w * x + b" data-params="w: -3..3 step 0.1 = 1; ..." ...>` draws any formula on fixed axes with a slider per parameter. Variants are extra attributes on the same div (they combine): `data-probe="x"` (pick an input, show the prediction dot, `{yhat}`), `data-errors` (dotted gap labelled with its length from every point to the line, plus an automatic squared-error readout: total squared error, m, MSE, J(w,b) = SSE/2m; placeholders `{sse}` `{mse}` `{j}` `{total}` `{mean}` `{m}`). 3D: `data-surface="w,b"` draws the cost surface of `data-fn` over `data-points` (`data-cost="mae"|"mse"|"half-mse"`, where half-mse = J(w,b) = SSE/2m, the course's cost; `{cost}`), with a marker driven by the sliders. Optional surface extras: `data-linked-plot` (2D prediction/error graph beside it, sharing the sliders), `data-corners="A B C D"` (floor corner letters fixed to parameter positions), `data-minimum` (marks the lowest point, found numerically), `data-presets="Try corner B: w=3, b=-3"` (buttons that set sliders). It uses Plotly (full bundle, ~1.4 MB, URL in `PLOTLY_URL`), loaded only on pages that have a 3D graph; prefer Plotly for future complex charts (contours, 3D paths) rather than hand-rolling them. All options are documented at the top of the file; `cost-function.md` uses all three. **Extend this file with a new attribute for new graph needs; don't create another graph script.**
 
 ## Example note (template)
 
